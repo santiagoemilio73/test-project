@@ -32,14 +32,24 @@ clear error handling.
    python3 --version
    ```
 
-No installation step is required.
+3. (Optional) Install the third-party dependencies:
+
+   ```bash
+   python3 -m pip install -r requirements.txt
+   ```
+
+No third-party packages are required, so installation is optional.
 
 ## Usage
 
-From the project root:
+From the project root, run either of:
 
 ```bash
 python3 main.py
+```
+
+```bash
+python3 -m calculator
 ```
 
 Example session:
@@ -66,15 +76,20 @@ Goodbye!
 test-project/
 ├── calculator/
 │   ├── __init__.py      # Package exports
+│   ├── __main__.py      # Enables `python -m calculator`
 │   ├── cli.py           # Interactive command-line interface
 │   ├── operations.py    # Arithmetic functions and dispatch
 │   └── validation.py    # Numeric input parsing and validation
 ├── tests/
 │   ├── __init__.py
+│   ├── test_cli.py
 │   ├── test_operations.py
 │   └── test_validation.py
-├── main.py              # Entry point
-└── README.md
+├── .gitignore
+├── main.py              # Script entry point
+├── pyproject.toml       # Project metadata and packaging
+├── README.md
+└── requirements.txt     # No third-party dependencies
 ```
 
 ## Testing
@@ -85,10 +100,11 @@ Run the full test suite from the project root:
 python3 -m unittest discover -v
 ```
 
-You can also target a single module:
+The suite covers arithmetic operations, input validation, and the interactive
+CLI. You can also target a single module:
 
 ```bash
-python3 -m unittest tests.test_operations -v
+python3 -m unittest tests.test_cli -v
 ```
 
 ## License

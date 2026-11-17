@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "simple-calculator"
+version = "1.0.0"
+description = "A simple, dependency-free command-line calculator."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+simple-calculator = "calculator.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["calculator*"]
